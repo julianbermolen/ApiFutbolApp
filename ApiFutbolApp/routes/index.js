@@ -1,19 +1,14 @@
 var express = require('express');
 var router = express.Router();
+var conection = require('../models/mysql.js');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-/* GET home page. */
-router.get('/in', function(req, res, next) {
-	title = conection.query('select * from usuarios',function(err,rows,fields){
-			conection.end();
-			if(err) throw err;
-
-			res.json(rows);
-	});
+/* GET users from bdd*/
+router.get('/userBD',function(req,res,next){
+	conection.query('SELECT 1 + 1 AS Solution');
 });
-
 module.exports = router;
